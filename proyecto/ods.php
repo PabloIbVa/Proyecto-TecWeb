@@ -1,3 +1,19 @@
+<?php
+    session_start();
+
+    if(isset($_SESSION["user_id"])){
+        $mysql = require_once __DIR__ . "/Backend/myapi/database.php";
+
+        $sql = "SELECT * FROM user WHERE id = {$_SESSION["user_id"]}";
+
+        $result = $mysql->query($sql);
+
+        $user = $result->fetch_assoc();
+
+
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,8 +21,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro - BugWeb</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
-  <script src="js/validacion.js" defer></script>
   <style>
     body {
       background: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png');
@@ -74,30 +88,17 @@
 </head>
 <body>
   <div class="signup-container">
-    <h1>Registro</h1>
+    <h1>ODS</h1>
 
-    <form action="Backend/myapi/Registro/process-signup.php" method="post" id="signup" novalidate>
-      <div>
-        <label for="name">Nombre de usuario:</label>
-        <input type="text" id="name" name="name">
-      </div>
-
-      <div>
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-
-      <div>
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required>
-      </div>
-
-      <div>
-        <label for="confirm-password">Confirmar contraseña:</label>
-        <input type="password" id="confirm-password" name="confirm-password" required>
-      </div>
-      
-      <button type="submit">Registrarse</button>
+    <?php if (isset($user)): ?>
+      <p style="color: #d4edc9; text-align: center;">Ya has iniciado sesión</p>
+      <p> Bienvenido, <?php echo htmlspecialchars($user["name"]); ?>!</p>
+      <p><a href="http://localhost/Proyecto-TecWeb/proyecto/logout.php">Cerrar sesión</a></p>
+    <?php else: ?>
+        <p style="color:#e7f2e2; text-align: center;"> No has iniciado sesión</p>
+        <p style="color:#e7f2e2; text-align: center;"> <a href="http://localhost/Proyecto-TecWeb/proyecto/login.php">Iniciar sesión</a> o <a href="http://localhost/Proyecto-TecWeb/proyecto/signup.html">Registrate</a></p>
+    <?php endif; ?>
     </form>
   </div>
 </body>
+</html>

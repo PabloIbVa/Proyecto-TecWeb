@@ -1,5 +1,4 @@
 <?php 
-
     if(empty($_POST["name"])){
         die("Tiene que colocar un nombre");
     }
@@ -25,6 +24,35 @@
     }
 
     $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+
+    $mysqli = require_once __DIR__ . "/../database.php";
+
+    $slq = "INSERT INTO user (name, email, password_hash) VALUES (?, ?, ?)";
+
+    $stmt = $mysqli->stmt_init();
+
+    if ( ! $stmt->prepare($slq)){
+        die("Error al preparar la consulta: " . $mysqli->error);
+    }
+
+    $stmt->bind_param("sss",
+                      $_POST["name"],
+                      $_POST["email"],
+                      $password_hash);
+
+    try {
+    if ($stmt->execute()) {
+        header("Location: http://localhost/Proyecto-TecWeb/proyecto/signup-succes.html");
+        exit;
+    }
+    } catch (mysqli_sql_exception $e) {
+        if ($e->getCode() === 1062) {
+            die("El email ya está registrado");
+        } else {
+            die("Error al registrar el usuario: " . $e->getMessage());
+        }
+    }
+    
 
     print_r($_POST);
     var_dump($password_hash);

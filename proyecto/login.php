@@ -1,3 +1,30 @@
+<?php
+    $is_invalid = false;
+    if($_SERVER["REQUEST_METHOD"] === "POST"){
+        $mysqli = require_once __DIR__ . "/Backend/myapi/database.php";
+        $sql = sprintf("SELECT * FROM user WHERE email = '%s'", $mysqli->real_escape_string($_POST["email"]));
+
+        $result = $mysqli->query($sql);
+
+        $user = $result->fetch_assoc();
+
+        if($user){
+            if(password_verify($_POST["password"], $user["password_hash"])){
+
+                session_start();
+
+                session_regenerate_id();
+                
+                $_SESSION["user_id"] = $user["id"];
+                
+                header("Location: ods.php");
+                
+                exit;
+            }
+        }
+    }
+    $is_invalid = true;
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,8 +32,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro - BugWeb</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
-  <script src="js/validacion.js" defer></script>
   <style>
     body {
       background: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png');
@@ -74,30 +99,21 @@
 </head>
 <body>
   <div class="signup-container">
-    <h1>Registro</h1>
+    <h1>Inicio sesion</h1>
 
-    <form action="Backend/myapi/Registro/process-signup.php" method="post" id="signup" novalidate>
+    <form method="post">
       <div>
-        <label for="name">Nombre de usuario:</label>
-        <input type="text" id="name" name="name">
-      </div>
-
-      <div>
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" required>
+        <label for="email">Correo: </label>
+        <input type="text" id="email" name="email"
+                value ="<?= htmlspecialchars($_POST["email"] ?? "") ?>">
       </div>
 
       <div>
         <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password" required>
       </div>
-
-      <div>
-        <label for="confirm-password">Confirmar contraseña:</label>
-        <input type="password" id="confirm-password" name="confirm-password" required>
-      </div>
       
-      <button type="submit">Registrarse</button>
+      <button type="submit">Iniciar sesion</button>
     </form>
   </div>
 </body>
