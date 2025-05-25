@@ -87,18 +87,41 @@
   </style>
 </head>
 <body>
-  <div class="signup-container">
-    <h1>ODS's</h1>
-
+  <div style="background-color: #2a2a2a">
     <?php if (isset($user)): ?>
-      <p style="color: #d4edc9; text-align: center;">Ya has iniciado sesión</p>
-      <p> Bienvenido, <?php echo htmlspecialchars($user["name"]); ?>!</p>
-      <p><a href="http://localhost/Proyecto-TecWeb/proyecto/logout.php">Cerrar sesión</a></p>
+      <div class="ods-container" style="max-width: 800px; margin: 0 auto; background-color: #2a2a2a; border-radius: 15px; padding: 2rem;">
+        <h2 style="text-align:center; color: #d4edc9;">ODS</h2>
+        <h4 style="text-align:center; color: #a5d6a7; margin-bottom: 2rem;">Vida de ecosistemas terrestres</h4>
+
+        <ul class="ods-tabs" style="display: flex; justify-content: center; list-style: none; padding: 0; margin-bottom: 1.5rem; border-bottom: 2px solid #4CAF50;">
+          <li><a href="#tab1" class="tab-link active-tab" style="padding: 0.5rem 1.5rem; color: #d4edc9; text-decoration: none; font-weight: bold;">Biodiversidad</a></li>
+          <li><a href="#tab2" class="tab-link" style="padding: 0.5rem 1.5rem; color: #d4edc9; text-decoration: none; font-weight: bold;">Deforestación</a></li>
+          <li><a href="#tab3" class="tab-link" style="padding: 0.5rem 1.5rem; color: #d4edc9; text-decoration: none; font-weight: bold;">Especies en peligro</a></li>
+        </ul>
+
+        <div class="tab-content" id="tab1">
+          <h5 style="color: #81c784;">Biodiversidad</h5>
+          <p style="color: #fff;">Alrededor del 80% de las especies terrestres habitan en bosques. La protección de estos ecosistemas es clave para mantener el equilibrio natural.</p>
+        </div>
+
+        <div class="tab-content" id="tab2" style="display: none;">
+          <h5 style="color: #81c784;">Deforestación</h5>
+          <p style="color: #fff;">Entre 2015 y 2020, se perdieron más de 10 millones de hectáreas de bosques por año. La agricultura intensiva es una de las principales causas.</p>
+        </div>
+
+        <div class="tab-content" id="tab3" style="display: none;">
+          <h5 style="color: #81c784;">Especies en peligro</h5>
+          <p style="color: #fff;">Más de 31,000 especies están en peligro de extinción, muchas debido a la pérdida de hábitat causada por la actividad humana.</p>
+        </div>
+      </div>
+
     <?php else: ?>
+        <h1>Error de inicio</h1>
         <p style="color:#e7f2e2; text-align: center;"> No has iniciado sesión</p>
         <p style="color:#e7f2e2; text-align: center;"> <a href="http://localhost/Proyecto-TecWeb/proyecto/login.php">Iniciar sesión</a> o <a href="http://localhost/Proyecto-TecWeb/proyecto/signup.html">Registrate</a></p>
     <?php endif; ?>
-    </form>
+
   </div>
+  <script src="js/ods.js"></script>
 </body>
 </html>

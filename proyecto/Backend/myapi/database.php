@@ -1,12 +1,20 @@
-<?php
-    $host = 'localhost';
-    $dbname = 'bugweb';
-    $username = 'root';
-    $password = 'W0lverine';
+<?php namespace myapi;
+    /**
+     * Clase abstracta para manejar la conexión a la base de datos
+     */
+    abstract class DataBase {
+        protected $conexion;
+        protected $data = [];
 
-    $mysqli = new mysqli($host, $username, $password, $dbname);
-    if ($mysqli->connect_error) {
-        die("Connection failed: " . $mysqli->connect_error);
+        public function __construct($db, $user = 'root', $pass = 'W0lverine') {
+            $this->conexion = new \mysqli('localhost', $user, $pass, $db);
+            
+            if ($this->conexion->connect_error) {
+                die("Error de conexión: " . $this->conexion->connect_error);
+            }
+        }
+        public function getData() {
+            return $this->data;
+        }
     }
-    return $mysqli;
 ?>
