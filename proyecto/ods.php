@@ -88,7 +88,7 @@
 </head>
 <body>
   <div class="signup-container">
-    <h1>ODS</h1>
+    <h1>ODS's</h1>
 
     <?php if (isset($user)): ?>
       <p style="color: #d4edc9; text-align: center;">Ya has iniciado sesión</p>

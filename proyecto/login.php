@@ -1,36 +1,31 @@
 <?php
     $is_invalid = false;
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mysqli = require_once __DIR__ . "/Backend/myapi/database.php";
         $sql = sprintf("SELECT * FROM user WHERE email = '%s'", $mysqli->real_escape_string($_POST["email"]));
 
         $result = $mysqli->query($sql);
-
         $user = $result->fetch_assoc();
 
-        if($user){
-            if(password_verify($_POST["password"], $user["password_hash"])){
-
+        if ($user) {
+            if (password_verify($_POST["password"], $user["password_hash"])) {
                 session_start();
-
                 session_regenerate_id();
-                
                 $_SESSION["user_id"] = $user["id"];
-                
                 header("Location: ods.php");
-                
                 exit;
             }
         }
+
+        $is_invalid = true;
     }
-    $is_invalid = true;
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro - BugWeb</title>
+  <title>Inicio Sesión - BugWeb</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -51,6 +46,7 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       width: 100%;
       max-width: 400px;
+      box-sizing: border-box;
     }
 
     h1 {
@@ -73,6 +69,7 @@
       margin-bottom: 1.2rem;
       background-color: #444;
       color: #fff;
+      box-sizing: border-box;
     }
 
     input:focus {
@@ -80,9 +77,13 @@
       background-color: #555;
     }
 
+    .button-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
     button {
-      width: 100%;
-      padding: 0.75rem;
+      padding: 0.6rem 2rem;
       background-color: #2e7d32;
       color: white;
       font-weight: bold;
@@ -95,25 +96,41 @@
     button:hover {
       background-color: #3e9142;
     }
+
+    .error-message {
+      color: #f88;
+      background-color: #442222;
+      padding: 0.5rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <div class="signup-container">
-    <h1>Inicio sesion</h1>
+    <h1>Inicio de Sesión</h1>
 
-    <form method="post">
+    <?php if ($is_invalid): ?>
+      <div class="error-message">Correo o contraseña inválidos</div>
+    <?php endif; ?>
+
+    <form method="post" novalidate>
       <div>
-        <label for="email">Correo: </label>
-        <input type="text" id="email" name="email"
-                value ="<?= htmlspecialchars($_POST["email"] ?? "") ?>">
+        <label for="email">Correo:</label>
+        <input type="text" id="email" name="email" placeholder="Ingresa tu correo electronido"
+               value="<?= htmlspecialchars($_POST["email"] ?? "") ?>">
       </div>
 
       <div>
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" required placeholder="Ingresa tu contraseña">
       </div>
-      
-      <button type="submit">Iniciar sesion</button>
+
+      <div class="button-wrapper">
+        <button type="submit">Iniciar sesión</button>
+      </div>
     </form>
   </div>
 </body>
+</html>
