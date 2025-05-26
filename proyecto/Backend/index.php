@@ -78,10 +78,11 @@
         }
         
         if (!isset($data['id'])) {
-            return $response->withJson([
+            $response->getBody()->write(json_encode([
                 'status' => 'error',
                 'message' => 'Se requiere el ID del insecto'
-            ], 400);
+            ]));
+            return $response->withStatus(400)->withHeader('Content-Type', 'application/json');
         }
         
         $id = $data['id'];

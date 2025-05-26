@@ -80,11 +80,11 @@ if (isset($_SESSION["user_id"])) {
     </header>
 
     <div class="sidebar-menu" id="sidebarMenu">
-      <a href="#">Añadir noticia</a>
+      <a href="">Añadir noticia</a>
       <a href="add_insects.php">Añadir nuevo insecto</a>
+      <a href="add_books.html">Añadir libro</a>
       <a href="ods.php">ODS</a>
-      <a href="#">Sobre nosotros</a>
-      <a href="#">Ir a página principal</a>
+      <a href="index.html">Ir a página principal</a>
     </div>
 
     <div class="container p-4">
@@ -135,6 +135,7 @@ if (isset($_SESSION["user_id"])) {
                       <input type="text" id="imagen" name="imagen" class="form-control" required value="Backend/img/insect/default.png">
                     </fieldset>
                   </div>
+                  <input type="hidden" id="productId">
                   <button class="btn btn-primary btn-block text-center" type="submit">
                     Agregar Insecto
                   </button>
