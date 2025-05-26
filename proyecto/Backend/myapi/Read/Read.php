@@ -112,8 +112,6 @@
             }
 
         }
-
-
     
         public function singleLibro($id) {
             $query = "SELECT * FROM libros WHERE id = '$id' AND eliminado = 0";
@@ -140,7 +138,7 @@
                 }
                 
                 if (empty($this->data)) {
-                    $this->data = ['error' => 'No se encontraron insectos'];
+                    $this->data = []; // Devuelve un arreglo vacío
                 }
             } else {
                 $this->data = ['error' => $this->conexion->error];
@@ -213,5 +211,19 @@
             }
         }
 
+        public function latestNoticias($limit = 3) {
+            $query = "SELECT * FROM noticias WHERE eliminado = 0 ORDER BY id DESC LIMIT $limit";
+            $result = $this->conexion->query($query);
+
+            if ($result) {
+                $this->data = [];
+                while ($row = $result->fetch_assoc()) {
+                    $this->data[] = $row;
+                }
+            } else {
+                $this->data = ['error' => $this->conexion->error];
+            }
+        }
+        
     }
 ?>

@@ -80,7 +80,7 @@ if (isset($_SESSION["user_id"])) {
     </header>
 
     <div class="sidebar-menu" id="sidebarMenu">
-      <a href="">Añadir noticia</a>
+      <a href="add_news.html">Añadir noticia</a>
       <a href="add_insects.php">Añadir nuevo insecto</a>
       <a href="add_books.html">Añadir libro</a>
       <a href="ods.php">ODS</a>

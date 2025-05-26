@@ -137,7 +137,7 @@
   </header>
 
   <div class="sidebar-menu" id="sidebarMenu">
-    <a href="">Añadir noticia</a>
+    <a href="add_news.html">Añadir noticia</a>
     <a href="add_insects.php">Añadir nuevo insecto</a>
     <a href="add_books.html">Añadir libro</a>
     <a href="ods.php">ODS</a>
@@ -218,46 +218,15 @@
     <div class="container my-5">
         <h4 class="section-title">¿Qué hay de nuevo?</h4>
         <div id="newsCarousel" class="carousel slide rounded-lg overflow-hidden" data-ride="carousel" data-interval="5000" data-pause="false">
-            <div class="carousel-inner">
-            
-            <!-- Noticia 1 -->
-                <div class="carousel-item active">
-                    <div class="d-flex flex-column flex-md-row bg-dark p-3">
-                        <img src="Backend/img/noticias/fosil_insecto.jpg" class="rounded mr-md-3 mb-3 mb-md-0" width="200" alt="Noticia 1">
-                        <div>
-                            <h5 class="text-light">¡Nuevo descubrimiento fosilizado!</h5>
-                            <p class="text-light">Un equipo de investigadores ha descrito 
-                            los fósiles de mosquito más antiguos hallados jamás. Se trata de dos insectos macho del Cretácico 
-                            Inferior que presentan unas piezas bucales punzantes, lo que sugiere que probablemente se
-                            alimentaban de la sangre. Ambos mosquitos, hallados 
-                            en el yacimiento de ámbar libanés (el más antiguo 
-                            del mundo, de unos 150 millones de años), se describen 
-                            en un artículo en la revista *Current Biology*.</p>
-                            <small class="text-muted">Fecha: 4 de Diciembre del 2023 18:03</small>
-                        </div>
-                    </div>
-                </div>
-
-            <!-- Noticia 2 -->
-                <div class="carousel-item">
-                    <div class="d-flex flex-column flex-md-row bg-dark p-3">
-                        <img src="Backend\img\noticias\FOTO EXHIBICIÓN DE INSECTUS  (1).jpeg" class="rounded mr-md-3 mb-3 mb-md-0" width="200" alt="Noticia 2">
-                        <div>
-                            <h5 class="text-light">Extincion de varios insectos</h5>
-                            <p class="text-light">La disminución de insectos se debe a la agricultura intensiva, 
-                            pesticidas y urbanización. Más del 40% de las especies está 
-                            en peligro de extinción, amenazando la polinización y la limpieza
-                            del suelo. Su desaparición sería el sexto evento de extinción,
-                            afectando gravemente los ecosistemas.Los insectos son vitales
-                            para la polinización, limpieza del suelo y la cadena alimentaria.
-                            La economía también depende de ellos, con la industria de la miel y
-                            los insectos comestibles. Para salvarlos, se sugiere plantar flores,
-                            controlar pesticidas y restaurar áreas naturales.</p>
-                            <small class="text-muted">Fecha: 18 de Noviembre del 2023 9:34</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <div class="carousel-inner" id="newsItemsContainer">
+            <!-- Noticias se cargarán dinámicamente aquí -->
+          </div>
+          <a class="carousel-control-prev" href="#newsCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </a>
+          <a class="carousel-control-next" href="#newsCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </a>
         </div>
     </div>
 

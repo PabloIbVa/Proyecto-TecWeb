@@ -223,6 +223,107 @@
         return $response->withHeader('Content-Type', 'application/json');
     });
 
+    // Obtener una noticia específica por ID
+    $app->get('/news/{id:[0-9]+}', function (Request $request, Response $response, $args) {
+        $read = new Read('bugweb'); 
+        $read->singleNoticia($args['id']);
+        $data = $read->getData();
+        $response->getBody()->write(json_encode($data ?: '{}'));
+        return $response->withHeader('Content-Type', 'application/json');
+    });
+
+    // Listar todas las noticias
+    $app->get('/news', function ($request, $response, $args) {
+        $read = new Read('bugweb');
+        $read->listNoticia();
+        $response->getBody()->write(json_encode($read->getData()));
+        return $response->withHeader('Content-Type', 'application/json');
+    });
+
+    // Buscar noticias por término
+    $app->get('/news/{search}', function (Request $request, Response $response, $args) {
+        $read = new Read('bugweb');
+        $read->searchNoticia($args['search']);
+        $response->getBody()->write(json_encode($read->getData()));
+        return $response->withHeader('Content-Type', 'application/json');
+    });
+
+    // Crear una nueva noticia
+    $app->post('/news', function (Request $request, Response $response) {
+        $body = json_decode($request->getBody(), true);
+        
+        if (!$body) {
+            $response->getBody()->write(json_encode(['error' => 'JSON inválido']));
+            return $response->withStatus(400)->withHeader('Content-Type', 'application/json');
+        }
+        
+        // Validar campos requeridos
+        $requiredFields = ['titulo', 'fecha_pub'];
+        foreach ($requiredFields as $field) {
+            if (!isset($body[$field])) {
+                $response->getBody()->write(json_encode(['error' => "Campo $field es requerido"]));
+                return $response->withStatus(400)->withHeader('Content-Type', 'application/json');
+            }
+        }
+        
+        $create = new Create('bugweb');
+        $create->addNoticia($body);
+        
+        $response->getBody()->write(json_encode($create->getData()));
+        return $response->withHeader('Content-Type', 'application/json');
+    });
+
+    // Actualizar una noticia existente
+    $app->put('/news', function (Request $request, Response $response) {
+        $json = $request->getBody()->getContents();
+        $data = json_decode($json, true);
+        
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            $response->getBody()->write(json_encode([
+                'status' => 'error',
+                'message' => 'JSON inválido'
+            ]));
+            return $response->withStatus(400)->withHeader('Content-Type', 'application/json');
+        }
+        
+        if (!isset($data['id'])) {
+            return $response->withJson([
+                'status' => 'error',
+                'message' => 'Se requiere el ID de la noticia'
+            ], 400);
+        }
+        
+        $id = $data['id'];
+        unset($data['id']);
+        
+        $update = new Update('bugweb');
+        $update->editNoticia($id, $data);
+        
+        $response->getBody()->write(json_encode($update->getData()));
+        return $response->withHeader('Content-Type', 'application/json');
+    });
+
+    // Eliminar una noticia
+    $app->delete('/news', function (Request $request, Response $response) {
+        $body = $request->getBody()->getContents();
+        $data = json_decode($body, true);
+        $id = $data['id'] ?? null;
+        
+        if (!$id) {
+            $response->getBody()->write(json_encode([
+                'status' => 'error',
+                'message' => 'Se requiere el ID de la noticia'
+            ]));
+            return $response->withStatus(400)->withHeader('Content-Type', 'application/json');
+        }
+        
+        $delete = new Delete('bugweb');
+        $delete->deleteNoticia($id);
+        
+        $response->getBody()->write(json_encode($delete->getData()));
+        return $response->withHeader('Content-Type', 'application/json');
+    });
+
     $app->get('/latest-books', function ($request, $response, $args) {
         $read = new Read('bugweb');
         $read->latestLibros();
@@ -237,6 +338,12 @@
         return $response->withHeader('Content-Type', 'application/json');
     });
 
+    $app->get('/latest-news', function ($request, $response, $args) {
+        $read = new Read('bugweb');
+        $read->latestNoticias();
+        $response->getBody()->write(json_encode($read->getData()));
+        return $response->withHeader('Content-Type', 'application/json');
+    });
 
     $app->run();
 ?>
