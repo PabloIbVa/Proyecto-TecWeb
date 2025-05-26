@@ -53,5 +53,26 @@
                 ? ['status' => 'success', 'message' => 'Libro agregado correctamente', 'id' => $nuevoId]
                 : ['status' => 'error', 'message' => $this->conexion->error];
         }
+
+        public function addNoticia($noticia) {
+            // Escapar los valores del array asociativo
+            $titulo = $this->conexion->real_escape_string($noticia['titulo']);
+            $contenido = $this->conexion->real_escape_string($noticia['contenido']);
+            $fecha_pub = $this->conexion->real_escape_string($noticia['fecha_pub']);
+            $img = $this->conexion->real_escape_string($noticia['img']);
+
+            // Consulta SQL de inserción
+            $query = "INSERT INTO noticias (titulo, contenido, fecha_pub, img)
+                    VALUES ('$titulo', '$contenido', '$fecha_pub', '$img')";
+
+            // Ejecutar la consulta
+            $result = $this->conexion->query($query);
+            $nuevoId = $this->conexion->insert_id;
+
+            // Devolver el resultado
+            $this->data = $result
+                ? ['status' => 'success', 'message' => 'Noticia agregada correctamente', 'id' => $nuevoId]
+                : ['status' => 'error', 'message' => $this->conexion->error];
+        }
     }
 ?>

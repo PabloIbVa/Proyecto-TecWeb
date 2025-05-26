@@ -129,6 +129,62 @@
             }
         }
 
+        public function listNoticia() {
+            $query = "SELECT * FROM noticias WHERE eliminado = 0";
+            $result = $this->conexion->query($query);
+            
+            if ($result) {
+                $this->data = [];
+                while ($row = $result->fetch_assoc()) {
+                    $this->data[] = $row;
+                }
+                
+                if (empty($this->data)) {
+                    $this->data = ['error' => 'No se encontraron insectos'];
+                }
+            } else {
+                $this->data = ['error' => $this->conexion->error];
+            }
+        }
+    
+        public function searchNoticia($criteria) {
+            $search = $this->conexion->real_escape_string($criteria);
+            $query = "SELECT * FROM noticias WHERE 
+                      (id = '$search' OR 
+                       titulo LIKE '%$search%' OR 
+                       fecha LIKE '%$search%') 
+                      AND eliminado = 0";
+            
+            $result = $this->conexion->query($query);
+            
+            if ($result) {
+                $this->data = [];
+                while ($row = $result->fetch_assoc()) {
+                    $this->data[] = $row;
+                }
+                
+                if (empty($this->data)) {
+                    $this->data = ['error' => 'No se encontraron resultados'];
+                }
+            } else {
+                $this->data = ['error' => $this->conexion->error];
+            }
+        }
+    
+        public function singleNoticia($id) {
+            $query = "SELECT * FROM noticias WHERE id = '$id' AND eliminado = 0";
+            $result = $this->conexion->query($query);
+            
+            if ($result) {
+                $this->data = $result->fetch_assoc();
+                if (!$this->data) {
+                    $this->data = ['error' => 'No se encontró el insecto'];
+                }
+            } else {
+                $this->data = ['error' => $this->conexion->error];
+            }
+        }
+
         public function latestLibros($limit = 4) {
             $query = "SELECT * FROM libros WHERE eliminado = 0 ORDER BY id DESC LIMIT $limit";
             $result = $this->conexion->query($query);

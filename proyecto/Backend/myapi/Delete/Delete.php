@@ -31,5 +31,15 @@
                 $this->data = ['status' => 'error', 'message' => $this->conexion->error];
             }
         }
+
+        public function deleteNoticia($id) {
+            $query = "UPDATE noticias SET eliminado=1 WHERE id = '$id'";
+            $result = $this->conexion->query($query);
+            if ($result) {
+                $this->data = ['status' => 'success', 'message' => 'Noticia eliminada correctamente'];
+            } else {
+                $this->data = ['status' => 'error', 'message' => $this->conexion->error];
+            }
+        }
     }
 ?>
