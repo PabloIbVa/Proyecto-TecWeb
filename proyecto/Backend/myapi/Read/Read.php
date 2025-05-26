@@ -128,5 +128,34 @@
                 $this->data = ['error' => $this->conexion->error];
             }
         }
+
+        public function latestLibros($limit = 4) {
+            $query = "SELECT * FROM libros WHERE eliminado = 0 ORDER BY id DESC LIMIT $limit";
+            $result = $this->conexion->query($query);
+            
+            if ($result) {
+                $this->data = [];
+                while ($row = $result->fetch_assoc()) {
+                    $this->data[] = $row;
+                }
+            } else {
+                $this->data = ['error' => $this->conexion->error];
+            }
+        }
+
+        public function latestInsectos($limit = 3) {
+            $query = "SELECT * FROM insectos WHERE eliminado = 0 ORDER BY id DESC LIMIT $limit";
+            $result = $this->conexion->query($query);
+            
+            if ($result) {
+                $this->data = [];
+                while ($row = $result->fetch_assoc()) {
+                    $this->data[] = $row;
+                }
+            } else {
+                $this->data = ['error' => $this->conexion->error];
+            }
+        }
+
     }
 ?>

@@ -167,30 +167,19 @@
   <div class="row">
     <!-- Libros -->
     <div class="col-md-6">
-        <h4 class="section-title">Libros</h4>
-        <div id="librosCarousel" class="carousel slide" data-ride="carousel" data-interval="3000" data-pause="hover">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="d-flex justify-content-center">
-                        <img src="Backend\img\libros\Beneficio_Insectos.PNG" alt="Libro 1" class="book-img mr-3">
-                        <img src="Backend\img\libros\Escarabajos.PNG" alt="Libro 2" class="book-img">
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="d-flex justify-content-center">
-                        <img src="Backend\img\libros\Import_insectos.PNG" alt="Libro 1" class="book-img mr-3">
-                        <img src="Backend\img\libros\Indentificacion_insectos.PNG" alt="Libro 2" class="book-img">
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#librosCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </a>
-            <a class="carousel-control-next" href="#librosCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </a>
-        </div>
+      <h4 class="section-title">Libros</h4>
+      <div id="librosCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner"></div>
+        <a class="carousel-control-prev" href="#librosCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#librosCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+      </div>
     </div>
+
+
 
     <!-- Biomas -->
     <div class="col-md-6">
@@ -275,34 +264,10 @@
 
   <!-- Insectos Descubiertos -->
     <div class="container my-5">
-    <h4 class="section-title">Insectos recientemente descubiertos</h4>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="Backend/img/desc-redc/ejemplar-phlogis-kibalensis-750x500.jpg" class="fixed-img" alt="Phlogis Kibalensis">
-                    <div class="card-body">
-                        <h5 class="card-title text-light">Phlogis Kibalensis</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="Backend/img/desc-redc/Insecto-Espina-2.jpg" class="fixed-img" alt="Insecto espina">
-                    <div class="card-body">
-                        <h5 class="card-title text-light">Insecto espina</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="Backend/img/desc-redc/ejemplar-phlogis-kibalensis-750x500.jpg" class="fixed-img" alt="Phlogis Kibalensis">
-                    <div class="card-body">
-                        <h5 class="card-title text-light">Phlogis Kibalensis</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <h4 class="section-title">Insectos recientemente descubiertos</h4>
+      <div class="row" id="insectosRecientes"></div>
     </div>
+
 
   <!-- Pie de Página -->
   <footer class="p-4">
@@ -342,7 +307,9 @@
       }
     }
   </script>
+
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/principal.js"></script>
 </body>
 </html>

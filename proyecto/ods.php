@@ -1,18 +1,18 @@
 <?php
-    session_start();
 
-    if(isset($_SESSION["user_id"])){
-        $mysql = require_once __DIR__ . "/Backend/myapi/database.php";
+  require_once __DIR__ . "/vendor/autoload.php";
 
-        $sql = "SELECT * FROM user WHERE id = {$_SESSION["user_id"]}";
+  use myapi\Auth\UserAuth;
 
-        $result = $mysql->query($sql);
+  session_start();
 
-        $user = $result->fetch_assoc();
-
-
-    }
+  if (isset($_SESSION["user_id"])) {
+      $auth = new UserAuth('bugweb');
+      $user = $auth->getUserById($_SESSION["user_id"]);
+  }
+  
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">

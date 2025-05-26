@@ -1,13 +1,10 @@
 <?php
-    $mysqli = require __DIR__ . '/../database.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
-    $sql = sprintf("SELECT * FROM user WHERE email = '%s'", $mysqli->real_escape_string($_GET["email"]));
+use myapi\Auth\UserAuth;
 
-    $result = $mysqli->query($sql);
+$auth = new UserAuth('bugweb');
+$is_available = $auth->emailAvailable($_GET["email"]);
 
-    $is_available = $result->num_rows === 0;
-
-    header('Content-Type: application/json');
-
-    echo json_encode(['aviable' => $is_available]);
-?>
+header('Content-Type: application/json');
+echo json_encode(['available' => $is_available]);

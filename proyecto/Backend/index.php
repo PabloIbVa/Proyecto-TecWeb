@@ -222,5 +222,20 @@
         return $response->withHeader('Content-Type', 'application/json');
     });
 
+    $app->get('/latest-books', function ($request, $response, $args) {
+        $read = new Read('bugweb');
+        $read->latestLibros();
+        $response->getBody()->write(json_encode($read->getData()));
+        return $response->withHeader('Content-Type', 'application/json');
+    });
+
+    $app->get('/latest-insects', function ($request, $response, $args) {
+        $read = new Read('bugweb');
+        $read->latestInsectos();
+        $response->getBody()->write(json_encode($read->getData()));
+        return $response->withHeader('Content-Type', 'application/json');
+    });
+
+
     $app->run();
 ?>
