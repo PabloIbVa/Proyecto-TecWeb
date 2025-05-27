@@ -1,0 +1,112 @@
+body {
+  background: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png');
+  background-color: #1c1c1c;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+header {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+}
+
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #2a2a2a;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 1050;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sidebar-menu.show {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar-menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 0;
+  font-weight: bold;
+}
+
+.card,
+.table {
+  border: none;
+  border-radius: 20px;
+  background-color: #2e2e2e;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+footer {
+  background-color: #2f4f2f;
+}
+
+footer h5,
+footer h6,
+footer p {
+  color: #d4edc9;
+}
+
+.menu-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 1.7rem;
+  color: white;
+}
+
+.menu-btn:hover {
+  color: #cdeccd;
+}
+
+.animated-header {
+  animation: bounceIn 1.5s;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

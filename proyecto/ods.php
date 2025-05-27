@@ -21,75 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro - BugWeb</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png');
-      background-color: #1c1c1c;
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    .ods-container {
-      background-color: #2a2a2a;
-      padding: 2rem 2.5rem;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      width: 100%;
-      max-width: 800px;
-    }
-
-    h2, h4 {
-      text-align: center;
-      color: #d4edc9;
-      margin-bottom: 1rem;
-    }
-
-    .ods-tabs {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      padding: 0;
-      margin-bottom: 1.5rem;
-      border-bottom: 2px solid #4CAF50;
-    }
-
-    .ods-tabs li {
-      margin: 0 0.5rem;
-    }
-
-    .tab-link {
-      padding: 0.5rem 1.5rem;
-      color: #d4edc9;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    .tab-link.active-tab {
-      color: #81c784;
-      border-bottom: 2px solid #81c784;
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-    .tab-content h5 {
-      color: #81c784;
-    }
-
-    .tab-content p {
-      color: #fff;
-    }
-  </style>
+  <link rel="stylesheet" href="css/ods.css">
 </head>
 <body>
   <div style="background-color: #2a2a2a">
@@ -99,19 +31,53 @@
         <h4>Vida de ecosistemas terrestres</h4>
 
             <ul class="ods-tabs" style="display: flex; justify-content: center; list-style: none; padding: 0; margin-bottom: 1.5rem; border-bottom: 2px solid #4CAF50;">
-              <li><a href="#tab1" class="tab-link active-tab" style="padding: 0.5rem 1.5rem; color: #d4edc9; text-decoration: none; font-weight: bold;">Biodiversidad</a></li>
-              <li><a href="#tab2" class="tab-link" style="padding: 0.5rem 1.5rem; color: #d4edc9; text-decoration: none; font-weight: bold;">Deforestación</a></li>
+              <li><a href="#tab1" class="tab-link active-tab" style="padding: 0.5rem 1.5rem; color: #d4edc9; text-decoration: none; font-weight: bold;">Metas</a></li>
+              <li><a href="#tab2" class="tab-link" style="padding: 0.5rem 1.5rem; color: #d4edc9; text-decoration: none; font-weight: bold;">Proposito</a></li>
               <li><a href="#tab3" class="tab-link" style="padding: 0.5rem 1.5rem; color: #d4edc9; text-decoration: none; font-weight: bold;">Especies en peligro</a></li>
             </ul>
 
             <div class="tab-content active" id="tab1">
-              <h5 style="color: #81c784;">Biodiversidad</h5>
-              <p style="color: #fff;">Alrededor del 80% de las especies terrestres habitan en bosques. La protección de estos ecosistemas es clave para mantener el equilibrio natural.</p>
+              <h5 style="color: #81c784;">Metas Principales</h5>
+              <p>
+                  <strong>Descripción:</strong> Este objetivo busca proteger, restaurar y promover el uso sostenible de los ecosistemas terrestres,
+                  gestionar de forma sostenible los bosques, luchar contra la desertificación, detener e invertir la degradación de la tierra
+                  y frenar la pérdida de biodiversidad.
+              </p>
+
+              <p>
+                  <strong>Principales metas:</strong><br>
+                  • Conservación de ecosistemas terrestres y de agua dulce.<br>
+                  • Gestión sostenible de bosques<br>
+                  • Lucha contra la desertificación<br>
+                  • Conservación de la biodiversidad<br>
+                  • Acceso a beneficios de los recursos genéticos<br>
+                  • Combatir la caza furtiva y el tráfico de especies.<br>
+                  • Integración de los valores de los ecosistemas en políticas nacionales.<br>
+                  • Movilizar recursos para conservar la biodiversidad.
+              </p>
             </div>
 
             <div class="tab-content" id="tab2" style="display: none;">
-              <h5 style="color: #81c784;">Deforestación</h5>
-              <p style="color: #fff;">Entre 2015 y 2020, se perdieron más de 10 millones de hectáreas de bosques por año. La agricultura intensiva es una de las principales causas.</p>
+              <h5 style="color: #81c784;">Proposito o papel que tendra la aplicacion web para la solucion del ODS:</h5>
+              <p>
+                La página web actúa como unaherramienta educativa e interactiva que promueve la conciencia sobre la importancia ecológica de los
+                insectos y su papel en los ecosistemas terrestres. Al difundir información accesible sobre especies nativas,
+                sus funciones en la naturaleza y las amenazas que enfrentan, el proyecto contribuye directamente a la
+                meta de detener la pérdida de biodiversidad.
+                </p>
+
+                <p>
+                La página web, titulada provisionalmente <strong>BugWeb</strong>, se plantea como una herramienta digital moderna y
+                accesible que permita a estudiantes, docentes, investigadores y público general explorar la diversidad de
+                insectos mexicanos mediante recursos interactivos, fichas informativas, galerías visuales, mapas
+                geográficos de distribución, actividades didácticas y datos científicos confiables.
+                </p>
+
+                <p>
+                Además, el proyecto fomenta el desarrollo de habilidades digitales, el pensamiento crítico y el compromiso ambiental en niños
+                y jóvenes, al tiempo que promueve la colaboración entre comunidades escolares, universidades, museos
+                de ciencias naturales y organizaciones civiles enfocadas en la biodiversidad.
+                </p>
             </div>
 
             <div class="tab-content" id="tab3" style="display: none;">

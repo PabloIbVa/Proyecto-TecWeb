@@ -12,6 +12,7 @@ if (isset($_SESSION["user_id"])) {
     $user = $auth->getUserById($_SESSION["user_id"]);
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,48 +21,7 @@ if (isset($_SESSION["user_id"])) {
   <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    /* COPIA TODO TU ESTILO AQUÍ (del .html original) */
-    body {
-      background: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png');
-      background-color: #1c1c1c;
-      font-family: 'Poppins', sans-serif;
-    }
-    .wrapper { display: flex; flex-direction: column; min-height: 100vh; }
-    .container { flex: 1; }
-    header { background-color: #2e7d32; color: white; }
-    .logo { width: 50px; height: auto; }
-    .sidebar-menu {
-      position: fixed; top: 0; right: 0; height: 100%; width: 250px;
-      background-color: #2a2a2a; padding: 2rem 1rem; display: flex;
-      flex-direction: column; z-index: 1050; box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-      transform: translateX(100%); opacity: 0; pointer-events: none;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    .sidebar-menu.show {
-      transform: translateX(0); opacity: 1; pointer-events: auto;
-    }
-    .sidebar-menu a {
-      color: #fff; text-decoration: none; padding: 0.5rem 0; font-weight: bold;
-    }
-    .card, .table {
-      border: none; border-radius: 20px; background-color: #2e2e2e;
-      backdrop-filter: blur(4px); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
-    }
-    .card:hover { transform: scale(1.03); }
-    footer { background-color: #2f4f2f; }
-    footer h5, footer h6, footer p { color: #d4edc9; }
-    .menu-btn { background-color: transparent; border: none; font-size: 1.7rem; color: white; }
-    .menu-btn:hover { color: #cdeccd; }
-    .animated-header { animation: bounceIn 1.5s; }
-    @keyframes bounceIn {
-      0% { transform: scale(0.3); opacity: 0; }
-      50% { transform: scale(1.05); opacity: 1; }
-      70% { transform: scale(0.9); }
-      100% { transform: scale(1); }
-    }
-  </style>
+  <link rel="stylesheet" href="css/add_insects.css">
 </head>
 <body onclick="closeMenu(event)">
   <div class="wrapper">
@@ -80,11 +40,20 @@ if (isset($_SESSION["user_id"])) {
     </header>
 
     <div class="sidebar-menu" id="sidebarMenu">
-      <a href="add_news.html">Añadir noticia</a>
+      <a href="add_news.php">Añadir noticia</a>
       <a href="add_insects.php">Añadir nuevo insecto</a>
-      <a href="add_books.html">Añadir libro</a>
+      <a href="add_books.php">Añadir libro</a>
       <a href="ods.php">ODS</a>
-      <a href="index.html">Ir a página principal</a>
+      <a href="index.php">Ir a página principal</a>
+
+      <hr>
+
+      <?php if (isset($_SESSION['user_id'])): ?>
+        <a href="logout.php" class="btn btn-danger">Cerrar sesión</a>
+      <?php else: ?>
+        <a href="login.php" class="btn btn-primary">Iniciar sesión</a>
+        <a href="signup.html" class="btn btn-secondary">Registrarse</a>
+      <?php endif; ?>
     </div>
 
     <div class="container p-4">

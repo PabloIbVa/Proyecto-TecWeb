@@ -1,0 +1,67 @@
+body {
+  background: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png');
+  background-color: #1c1c1c;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.ods-container {
+  background-color: #2a2a2a;
+  padding: 2rem 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 800px;
+}
+
+h2, h4 {
+  text-align: center;
+  color: #d4edc9;
+  margin-bottom: 1rem;
+}
+
+.ods-tabs {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #4CAF50;
+}
+
+.ods-tabs li {
+  margin: 0 0.5rem;
+}
+
+.tab-link {
+  padding: 0.5rem 1.5rem;
+  color: #d4edc9;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.tab-link.active-tab {
+  color: #81c784;
+  border-bottom: 2px solid #81c784;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h5 {
+  color: #81c784;
+}
+
+.tab-content p {
+  color: #fff;
+}

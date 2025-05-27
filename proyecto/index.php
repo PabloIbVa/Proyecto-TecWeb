@@ -1,3 +1,18 @@
+<?php
+
+  require_once __DIR__ . "/vendor/autoload.php";
+
+  use myapi\Auth\UserAuth;
+
+  session_start();
+
+  if (isset($_SESSION["user_id"])) {
+      $auth = new UserAuth('bugweb');
+      $user = $auth->getUserById($_SESSION["user_id"]);
+  }
+  
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,123 +22,7 @@
   <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background: url('https://www.transparenttextures.com/patterns/green-dust-and-scratches.png');
-      background-color: #1c1c1c;
-      font-family: 'Poppins', sans-serif;
-    }
-    header {
-      background-color: #2e7d32;
-      color: white;
-    }
-    .logo {
-      width: 50px;
-      height: auto;
-    }
-    .carousel-caption-overlay {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        font-weight: bold;
-        font-size: 1.5rem;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-    }
-    .carousel-item.position-relative {
-        position: relative;
-    }
-    .sidebar-menu {
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100%;
-        width: 250px;
-        background-color: #2a2a2a;
-        padding: 2rem 1rem;
-        display: flex;
-        flex-direction: column;
-        z-index: 1050;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        transform: translateX(100%);
-        opacity: 0;
-        pointer-events: none;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-    .sidebar-menu.show {
-        transform: translateX(0);
-        opacity: 1;
-        pointer-events: auto;
-    }
-    .sidebar-menu a {
-      color: #fff;
-      text-decoration: none;
-      padding: 0.5rem 0;
-      font-weight: bold;
-    }
-    .carousel-inner img {
-      border-radius: 15px;
-    }
-    .section-title {
-      color: #d4edc9;
-      border-bottom: 2px solid #4CAF50;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
-    .card {
-      border: none;
-      border-radius: 20px;
-      background-color: #2e2e2e;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: scale(1.03);
-    }
-    footer {
-      background-color: #2f4f2f;
-    }
-    footer h5, footer h6, footer p {
-      color: #d4edc9;
-    }
-    .menu-btn {
-      background-color: transparent;
-      border: none;
-      font-size: 1.7rem;
-      color: white;
-    }
-    .menu-btn:hover {
-      color: #cdeccd;
-    }
-    .book-img {
-      height: 250px;
-      width: auto;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    }
-    .animated-header {
-      animation: bounceIn 1.5s;
-    }
-    @keyframes bounceIn {
-      0% { transform: scale(0.3); opacity: 0; }
-      50% { transform: scale(1.05); opacity: 1; }
-      70% { transform: scale(0.9); }
-      100% { transform: scale(1); }
-    }
-    .rounded-carousel {
-        border-radius: 20px;
-        overflow: hidden;
-    }
-    .fixed-img {
-        width: 100%;
-        height: 350px;
-        object-fit: cover;
-        border-radius: 0.5rem;
-    }
-  </style>
+  <link rel="stylesheet" href="css/index.css">
 </head>
 <body onclick="closeMenu(event)">
   <header class="d-flex justify-content-between align-items-center p-3 animated-header">
@@ -137,12 +36,22 @@
   </header>
 
   <div class="sidebar-menu" id="sidebarMenu">
-    <a href="add_news.html">Añadir noticia</a>
+    <a href="add_news.php">Añadir noticia</a>
     <a href="add_insects.php">Añadir nuevo insecto</a>
-    <a href="add_books.html">Añadir libro</a>
+    <a href="add_books.php">Añadir libro</a>
     <a href="ods.php">ODS</a>
-    <a href="index.html">Ir a página principal</a>
+    <a href="index.php">Ir a página principal</a>
+
+    <hr>
+
+    <?php if (isset($_SESSION['user_id'])): ?>
+      <a href="logout.php" class="btn btn-danger">Cerrar sesión</a>
+    <?php else: ?>
+      <a href="login.php" class="btn btn-primary">Iniciar sesión</a>
+      <a href="signup.html" class="btn btn-secondary">Registrarse</a>
+    <?php endif; ?>
   </div>
+
 
   <!-- Carrusel de Insectos -->
   <div id="insectCarousel" class="carousel slide m-4" data-ride="carousel" data-interval="3000" data-pause="hover">
