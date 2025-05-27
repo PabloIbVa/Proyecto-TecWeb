@@ -33,7 +33,7 @@
             <ul class="ods-tabs" style="display: flex; justify-content: center; list-style: none; padding: 0; margin-bottom: 1.5rem; border-bottom: 2px solid #4CAF50;">
               <li><a href="#tab1" class="tab-link active-tab" style="padding: 0.5rem 1.5rem; color: #d4edc9; text-decoration: none; font-weight: bold;">Metas</a></li>
               <li><a href="#tab2" class="tab-link" style="padding: 0.5rem 1.5rem; color: #d4edc9; text-decoration: none; font-weight: bold;">Proposito</a></li>
-              <li><a href="#tab3" class="tab-link" style="padding: 0.5rem 1.5rem; color: #d4edc9; text-decoration: none; font-weight: bold;">Especies en peligro</a></li>
+              <li><a href="#tab3" class="tab-link" style="padding: 0.5rem 1.5rem; color: #d4edc9; text-decoration: none; font-weight: bold;">Metas de ODS</a></li>
             </ul>
 
             <div class="tab-content active" id="tab1">
@@ -81,7 +81,7 @@
             </div>
 
             <div class="tab-content" id="tab3" style="display: none;">
-              <h5 style="color: #81c784;">Especies en peligro</h5>
+              <h5 style="color: #81c784;">Metas cumplidas de nuestro ODS</h5>
               <p style="color: #fff;">Más de 31,000 especies están en peligro de extinción, muchas debido a la pérdida de hábitat causada por la actividad humana.</p>
             </div>
           </div>

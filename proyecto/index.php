@@ -130,12 +130,6 @@
           <div class="carousel-inner" id="newsItemsContainer">
             <!-- Noticias se cargarán dinámicamente aquí -->
           </div>
-          <a class="carousel-control-prev" href="#newsCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          </a>
-          <a class="carousel-control-next" href="#newsCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          </a>
         </div>
     </div>
 
@@ -163,10 +157,6 @@
         <div class="col-md-3">
           <h6>Materia</h6>
           <p>Tecnologías Web</p>
-        </div>
-        <div class="col-md-3">
-          <h6>Legales</h6>
-          <p>Avisos de privacidad y términos de uso</p>
         </div>
       </div>
     </div>

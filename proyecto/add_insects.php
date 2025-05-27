@@ -161,10 +161,6 @@ if (isset($_SESSION["user_id"])) {
             <h6>Materia</h6>
             <p>Tecnologías Web</p>
           </div>
-          <div class="col-md-3">
-            <h6>Legales</h6>
-            <p>Avisos de privacidad y términos de uso</p>
-          </div>
         </div>
       </div>
     </footer>
