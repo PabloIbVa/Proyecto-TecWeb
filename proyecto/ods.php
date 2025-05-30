@@ -82,16 +82,51 @@
 
             <div class="tab-content" id="tab3" style="display: none;">
               <h5 style="color: #81c784;">Metas cumplidas de nuestro ODS</h5>
-              <p style="color: #fff;">Más de 31,000 especies están en peligro de extinción, muchas debido a la pérdida de hábitat causada por la actividad humana.</p>
+              <p style="color: #fff;"><strong>15.5 Adoptar medidas urgentes y significativas para reducir la degradación de los hábitats naturales, detener la pérdida de la diversidad biológica y, para 2020, proteger las especies amenazadas y evitar su extinción</strong>:
+                Con nuestro proyecto BugWeb,
+                buscamos atender esta meta mediante una plataforma web que
+                actúa como una enciclopedia digital sobre la diversidad de insectos en México.
+                Sabemos que muchas especies están amenazadas debido a la pérdida de hábitat, el cambio climático
+                y el uso indiscriminado de pesticidas. Por eso, diseñamos un sistema que permite documentar
+                detalladamente a estos insectos, incluyendo su distribución, hábitat, estado de conservación y
+                características ecológicas. Al hacer esta información accesible al público, contribuimos a generar
+                conciencia sobre la importancia de su preservación, fomentando así acciones de protección tanto
+                individuales como colectivas. Esta visibilidad facilita además la identificación de especies vulnerables
+                y puede inspirar medidas concretas para frenar su desaparición.
+              </p>
+              <p style="color: #fff:"></strong>15.9 Integrar los valores de los ecosistemas y la biodiversidad en las políticas, estrategias y planes nacionales</strong>: 
+                na de nuestras motivaciones al crear BugWeb fue precisamente visibilizar 
+                el valor ecológico e intrínseco de los insectos, que muchas veces son 
+                ignorados a pesar de su papel esencial en el equilibrio de los ecosistemas. 
+                A través de nuestra plataforma, pretendemos que estudiantes, investigadores 
+                y autoridades locales puedan utilizar esta base de datos como una herramienta 
+                para comprender mejor la biodiversidad de sus entornos y tomar decisiones más informadas.
+              </p>
+              <p style="color: #fff:"></strong>15.c Aumentar significativamente la financiación y los recursos para la conservación de los ecosistemas y la biodiversidad, y para el desarrollo de infraestructuras sostenibles</strong>:
+                Aunque esta meta suele estar dirigida a fauna de mayor tamaño, 
+                creemos que los insectos también merecen atención en el marco de 
+                la protección de la biodiversidad. BugWeb, más allá de ser una base 
+                de datos, es una plataforma educativa que puede fortalecer las capacidades 
+                de las comunidades locales al brindarles herramientas de conocimiento 
+                sobre su entorno natural. Mediante la divulgación científica accesible, 
+                podemos inspirar vocaciones en biología, conservación o educación ambiental, 
+                y fomentar actividades sostenibles vinculadas a la observación, el estudio o 
+                la protección de insectos.
+              </p>
             </div>
           </div>
-
+        <a href="index.php" class="btn btn-success" style="color: #81c784; display: block; margin: 20px auto; text-align: center;">Volver a la página principal</a>
       </div>
 
     <?php else: ?>
-        <h1>Error de inicio</h1>
-        <p style="color:#e7f2e2; text-align: center;"> No has iniciado sesión</p>
-        <p style="color:#e7f2e2; text-align: center;"> <a href="http://localhost/Proyecto-TecWeb/proyecto/login.php">Iniciar sesión</a> o <a href="http://localhost/Proyecto-TecWeb/proyecto/signup.html">Registrate</a></p>
+        <div class="ods-container error-container">
+          <h1 style="text-align: center; color: #f44336;">Error de inicio</h1>
+          <p style="color:#e7f2e2; text-align: center; font-size: 1.1rem;">No has iniciado sesión</p>
+          <p style="color:#e7f2e2; text-align: center; font-size: 1.1rem;">
+            <a href="http://localhost/Proyecto-TecWeb/proyecto/login.php" style="color: #81c784; text-decoration: underline;">Iniciar sesión</a> o 
+            <a href="http://localhost/Proyecto-TecWeb/proyecto/signup.html" style="color: #81c784; text-decoration: underline;">Registrate</a>
+          </p>
+        </div>
     <?php endif; ?>
 
   </div>
